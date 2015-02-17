@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hackernewsrails2</title>
+  <link rel="stylesheet" href="//railsgirls.com/assets/bootstrap.css">
+   <link rel="stylesheet" href="//railsgirls.com/assets/bootstrap-theme.css">
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">Hacker News Rails</a>
+    </div>
+    <div>
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/">Home</a></li>
+        <% if user_signed_in? %>
+        <li><%= link_to 'New Post', new_post_path %></li>
+        <li><a href="/logout">Logout</a></li>
+        <% else %>
+        <li></li>
+        <li><a href="/login">Login</a></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container">
+  <%= yield %>
+</div>
+
+</body>
+</html>
